@@ -7,7 +7,7 @@ import src.pumpfun as pf
 ss = st.session_state
 
 st.set_page_config(
-    page_title="pump.fun Scanner",
+    page_title=" pump.fun Scanner",
     page_icon="💊",
     layout="wide"
 )
@@ -17,10 +17,20 @@ ut.init_state()
 
 # Loads sidebar
 with st.sidebar:
-    progress = st.empty()
-    st.write("FILTER FOR SIDEBAR")
+    with st.form(key='filter'):
+        sLCol, sRCol = st.columns([1, 1])
+        sLCol.write("# FILTER:")
+        fltr = st.empty()
+        mcap = st.empty()
+        st.form_submit_button("Apply", use_container_width=True)
+        with fltr:
+            gui.load_sidebar()
+        mcap.slider('Market Cap', max_value=50000, step=5000)
 
-st.header("pump.fun Scanner")
+
+top_left, top_right = st.columns([7, 1])
+top_left.header("💊 pump.fun Scanner")
+top_right.markdown(f'SOLANA: ${pf.get_sol_price()}')
 
 gui.load_css_cache("footer")
 #gui.load_css_cache("header")
@@ -29,8 +39,7 @@ gui.load_css_cache("footer")
 # Columns for responsive Page layout and page structure
 h_l_col, h_r_col = st.columns([1, 1])  # Columns header
 left_col, right_col = st.columns([2, 1])  # Columns Search
-m_l_c, m_r_c = st.columns([1, 1])
-b_l_c, b_r_c = st.columns([1, 1])
+
 
 # BUTTONS
 with h_r_col:
@@ -54,18 +63,12 @@ if not ss['contractAddress']:
 
     with left_col:
         st.markdown("# Global")
-        globalFeed = pf.get_global()
-        gui.load_df(globalFeed, hide=False, image=True)
+        globalData = pf.get_global(nsfw="true")
+        gui.load_df(globalData, hide=False, image=True)
     with right_col:
-        st.markdown("# Trending")
-
-    with m_l_c:
-        st.markdown("# Top Buyers")
-
-    with m_r_c:
-        st.markdown("# Top Sellers")
-
-    st.markdown("")  # Spacer for columns
+        st.markdown("# King of the Hill")
+        kothData = pf.get_koth(nsfw="true")
+        gui.load_df(kothData, image=True)
 
 else:
     telegram.link_button("Telegram", url=f"https://friend.tech/", use_container_width=True)

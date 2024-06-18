@@ -9,10 +9,3 @@ def init_state():
     if 'reset' not in ss:
         ss['reset'] = False
 
-
-def reset_checkboxes():
-    ss['x'] = False
-    ss['tg'] = False
-    ss['nsfw'] = False
-    ss['web'] = False
-

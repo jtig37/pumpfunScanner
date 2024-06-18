@@ -3,6 +3,7 @@ import pandas as pd
 
 ss = st.session_state
 
+
 @st.cache_data(show_spinner=False)
 def load_css_cache(element):
     with open(f"css/{element}.css") as f:
@@ -53,6 +54,5 @@ def load_sidebar():
         label='Website',
         key='web'
     )
-
 
 

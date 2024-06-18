@@ -20,12 +20,21 @@ with st.sidebar:
     with st.form(key='filter'):
         sLCol, sRCol = st.columns([1, 1])
         sLCol.write("# FILTER:")
+
         fltr = st.empty()
+        koth = st.empty()
         mcap = st.empty()
+
         st.form_submit_button("Apply", use_container_width=True)
+
         with fltr:
             gui.load_sidebar()
-        mcap.slider('Market Cap', max_value=50000, step=5000)
+
+        koth.checkbox(
+            label='King of the Hill',
+            key='koth'
+        )
+        mcap.slider('Market Cap', max_value=100000, step=10000)
 
 
 top_left, top_right = st.columns([7, 1])

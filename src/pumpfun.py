@@ -18,6 +18,8 @@ def get_global(nsfw="false"):
             for item in data:
 
                 if not item['complete']:
+                    koth = False if item['king_of_the_hill_timestamp'] is None else True
+
                     filtered_data.append(
                         {
                             'icon': item['image_uri'],
@@ -30,7 +32,7 @@ def get_global(nsfw="false"):
                             'telegram': item['telegram'],
                             'website': item['website'],
                             'creator': item['creator'],
-                            'KOTH': False if item['king_of_the_hill_timestamp'] is None else True,
+                            'KOTH': koth,
                             'lastTrade': item['last_trade_timestamp'],  # TODO: Conversion
                             'replies': item['reply_count'],
                             'last_reply': item['last_reply']

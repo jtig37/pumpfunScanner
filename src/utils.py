@@ -6,6 +6,13 @@ ss = st.session_state
 def init_state():
     if 'contractAddress' not in ss:
         ss['contractAddress'] = False
-    if 'reset' not in ss:
-        ss['reset'] = False
+
+    if 'walletAddress' not in ss:
+        ss['walletAddress'] = False
+
+    if 'mcap' not in ss:
+        ss['mcap'] = False
+
+    if 'koth' not in ss:
+        ss['koth'] = False
 

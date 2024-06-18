@@ -25,7 +25,7 @@ with st.sidebar:
         koth = st.empty()
         mcap = st.empty()
 
-        st.form_submit_button("Apply", use_container_width=True)
+        st.form_submit_button("Apply Filters", use_container_width=True)
 
         with fltr:
             gui.load_sidebar()
@@ -34,7 +34,7 @@ with st.sidebar:
             label='King of the Hill',
             key='koth'
         )
-        mcap.slider('Market Cap', max_value=100000, step=10000)
+        mcap.slider('Minimum Market Cap', max_value=50000, step=1000, key='mcap')
 
 
 top_left, top_right = st.columns([7, 1])
@@ -69,14 +69,18 @@ with h_l_col.form(key="search", clear_on_submit=True):
 
 # GET FUNCTION
 if not ss['contractAddress']:
+    if 'nsfw' in ss and not ss['nsfw']:
+        nsfw = 'false'
+    else:
+        nsfw = 'true'
 
     with left_col:
         st.markdown("# Global")
-        globalData = pf.get_global(nsfw="true")
+        globalData = pf.get_global(nsfw=nsfw)
         gui.load_df(globalData, hide=False, image=True)
     with right_col:
         st.markdown("# King of the Hill")
-        kothData = pf.get_koth(nsfw="true")
+        kothData = pf.get_koth(nsfw=nsfw)
         gui.load_df(kothData, image=True)
 
 else:

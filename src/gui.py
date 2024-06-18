@@ -55,4 +55,3 @@ def load_sidebar():
         key='web'
     )
 
-

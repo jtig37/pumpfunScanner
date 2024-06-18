@@ -1,3 +1,8 @@
 /.streamlit/secrets.toml
 start.bat
 data.txt
+/.idea/misc.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/vcs.xml
+/.idea/workspace.xml

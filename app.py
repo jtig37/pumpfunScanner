@@ -18,7 +18,7 @@ ut.init_state()
 # Loads sidebar
 with st.sidebar:
     progress = st.empty()
-    st.write("PLACEHOLDER")
+    st.write("FILTER FOR SIDEBAR")
 
 st.header("pump.fun Scanner")
 

@@ -23,12 +23,12 @@ with st.sidebar:
 st.header("pump.fun Scanner")
 
 gui.load_css_cache("footer")
-gui.load_css_cache("header")
+#gui.load_css_cache("header")
 
 
 # Columns for responsive Page layout and page structure
 h_l_col, h_r_col = st.columns([1, 1])  # Columns header
-left_col, right_col = st.columns([1, 1])  # Columns Search
+left_col, right_col = st.columns([2, 1])  # Columns Search
 m_l_c, m_r_c = st.columns([1, 1])
 b_l_c, b_r_c = st.columns([1, 1])
 

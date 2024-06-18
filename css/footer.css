@@ -1,0 +1,13 @@
+<style>
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+color: white;
+text-align: center;
+}
+</style>
+<div class="footer">
+<p>Developed by <span style="color: lightblue;">1cy1c3.eth</span></p>
+</div>

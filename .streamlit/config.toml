@@ -4,3 +4,4 @@ showErrorDetails=false
 gatherUsageStats=false
 [theme]
 base="dark"
+primaryColor="lightgreen"

@@ -48,33 +48,16 @@
 
 // https://frontend-api.pump.fun/coins/king-of-the-hill?includeNsfw={bool}
 {
-    "mint":"HJeUVEAFyXgSUe1bJbEcRrYKjYPuJNYLZK76PzekG8KQ",
-    "name":"Minki",
-    "symbol":"Minki",
-    "description":"🍌 $Minki 🍌 The cutest finger monkey on the Solana blockchain 🍌$Minki 🍌 Come join the community X: https://twitter.com/SolMinki Tg: t.me/solminki Web: https://solminki.framer.website/",
-    "image_uri":"https://cf-ipfs.com/ipfs/QmfJo4BcZwTrKiVRvuizh7HArFYoMVu7ThEeVFYT9jkgTB",
-    "metadata_uri":"https://cf-ipfs.com/ipfs/QmRksSU1YWkbVmEkgLNx5YZnLJKLwhkrQ5RbsTubNLxmSa",
-    "twitter":"https://x.com/SolMinki",
-    "telegram":"https://t.me/solminki",
-    "bonding_curve":"Gmfcc85P7uEdnNCD2ovG4ogmaHYyupg7JoaonuUoJ6ak",
-    "associated_bonding_curve":"Qpd2jeze9XVXiaiyHuWCvnmRbHvH2kJrqDPvjzzJDvW",
-    "creator":"CcK6ba3k8ubAzsyBvynHnkoP4kRWJueEfuhx9erBwLQU",
-    "created_timestamp":1718702180508,
-    "raydium_pool":null,
-    "complete":false,
-    "virtual_sol_reserves":81984979463,
-    "virtual_token_reserves":392632897043290,
-    "total_supply":1000000000000000,
-    "website":"https://solminki.framer.website/",
-    "show_name":true,
-    "king_of_the_hill_timestamp":1718702284933,
-    "market_cap":208.808227941,
-    "reply_count":7,"nsfw":false,
-    "market_id":null,
-    "inverted":null,
-    "username":null,
-    "profile_image":null,
-    "usd_market_cap":28884.442171078535
+    {'mint': 'Hun7KkrQBAmbXmdrGGatJMgDR9jzo1GybHvXULuTpump',
+     'name': 'veshremy',
+      'symbol': 'REMY',
+       'description': 'REMY IS AN OG MEME Tg: https://t.me/REMY_Solana Twitter: https://x.com/Remy_Solana Website: https://veshremy.xyz',
+        'image_uri': 'https://cf-ipfs.com/ipfs/QmdC4a4bcQqM1KUkYKSmGVi7QtTYR5cSPEbYUZXD39R3mq',
+         'metadata_uri': 'https://cf-ipfs.com/ipfs/QmRgKsy5CWiW3dzFyoe2VDRTaJ8kAX2tnRQ5q6HUK33965', 'twitter': 'https://x.com/Remy_Solana', 'telegram':
+ 'https://t.me/REMY_Solana', 'bonding_curve': '67Jd8KaxX9HjJbdCC65X1TxmjfuKxAi9VANtyPtifTBQ', 'associated_bonding_curve': 'yky18dgmByBtfY3tQcJoBS9vEiEtBDWBtYC833kiqdr', 'creator': 'FiwjgGxrWeq4Bjnf9nNFA1wdWZCCZyLqgureN7qpEowi',
+'created_timestamp': 1718876315124, 'raydium_pool': None, 'complete': False, 'virtual_sol_reserves': 54181104672, 'virtual_token_reserves': 594118562235039, 'total_supply': 1000000000000000, 'website': 'https://veshremy.xyz', 's
+how_name': True, 'king_of_the_hill_timestamp': 1718876320552, 'market_cap': 91.195778277, 'reply_count': 0, 'nsfw': False, 'market_id': None, 'inverted': None, 'username': 'FIWDEV', 'profile_image': None}
+
 }
 
 

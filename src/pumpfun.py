@@ -1,13 +1,14 @@
 import streamlit as st
 import requests
 
+from src.utils import time_ago
 
 ss = st.session_state
 sc = st.secrets
 
 
 def get_global(nsfw="false"):
-    url = f'https://frontend-api.pump.fun/coins?offset=0&limit=0&sort=last_trade_timestamp&order=DESC&includeNsfw={nsfw}'
+    url = f'https://frontend-api.pump.fun/coins?offset=0&limit=50&sort=last_trade_timestamp&order=DESC&includeNsfw={nsfw}'
     filtered_data = []
     response = requests.get(url)
 
@@ -19,7 +20,7 @@ def get_global(nsfw="false"):
             for item in data:
 
                 if not item['complete']:
-                    koth = False if item['king_of_the_hill_timestamp'] is None else True
+                    # koth = False if item['king_of_the_hill_timestamp'] is None else True
                     if ((ss['x'] and item['twitter'] is None) or
                             (ss['tg'] and item['telegram'] is None) or
                             (ss['web'] and item['website'] is None) or
@@ -33,16 +34,16 @@ def get_global(nsfw="false"):
                                 'ticker': item['symbol'],
                                 'name': item['name'],
                                 'marketCap': round(item['usd_market_cap']),
-                                'age': item['created_timestamp'],   # TODO: Conversion
-                                #'CA': item['mint'],
-                                #'twitter': item['twitter'],
-                                #'telegram': item['telegram'],
-                                #'website': item['website'],
-                                #'creator': item['creator'],
-                                'KOTH': koth,
-                                #'lastTrade': item['last_trade_timestamp'],  # TODO: Conversion
-                                #'replies': item['reply_count'],
-                                #'last_reply': item['last_reply']
+                                'age': time_ago(int(item['created_timestamp'])),  # TODO: Conversion
+                                'link': item['mint'],
+                                # 'twitter': item['twitter'],
+                                # 'telegram': item['telegram'],
+                                # 'website': item['website'],
+                                # 'creator': item['creator'],
+                                # 'KOTH': koth,
+                                # 'lastTrade': time_ago(int(item['last_trade_timestamp'])),  # TODO: Conversion
+                                # 'replies': item['reply_count'],
+                                # 'last_reply': item['last_reply']
                             }
                         )
 
@@ -54,16 +55,80 @@ def get_global(nsfw="false"):
 def get_koth(nsfw="false"):
     url = f'https://frontend-api.pump.fun/coins/king-of-the-hill?includeNsfw={nsfw}'
 
-    # TODO: Catch error
+    filtered_data = []
     response = requests.get(url)
-    data = response.json()
-    return [data]
+
+    try:
+        data = response.json()
+        response.raise_for_status()
+        solPrice = get_sol_price()
+        if len(data) > 0:
+            if not data['complete']:
+                return {
+                    'icon': data['image_uri'],
+                    'ticker': data['symbol'],
+                    'name': data['name'],
+                    'marketCap': round(data['market_cap'] * solPrice),
+                    'age': time_ago(int(data['created_timestamp'])),  # TODO: Conversion
+                    'link': data['mint'],
+                    'twitter': data['twitter'],
+                    'telegram': data['telegram'],
+                    'website': data['website'],
+                    'creator': data['creator'],
+                    # 'KOTH': koth,
+                    # 'lastTrade': time_ago(int(item['last_trade_timestamp'])),  # TODO: Conversion
+                    'replies': data['reply_count'],
+                    # 'last_reply': item['last_reply']
+                }
+
+    except requests.exceptions.JSONDecodeError:
+        return None
 
 
 def get_sol_price():
     url = 'https://frontend-api.pump.fun/sol-price'
 
-    # TODO: Catch error
-    response = requests.get(url)
-    data = response.json()
-    return data['solPrice']
+    try:
+        response = requests.get(url)
+        data = response.json()
+        return data['solPrice']
+    except requests.exceptions.JSONDecodeError:
+        return None
+
+
+@st.cache_data(show_spinner=False)
+def check_address(address):
+    coin = False
+    wallet = False
+    try:
+        url = f'https://frontend-api.pump.fun/coins/{address}'
+        response = requests.get(url)
+        data = response.json()
+
+        if data is not None:
+            coin = True
+        if 'statusCode' in data:
+            coin = False
+
+    except requests.exceptions.JSONDecodeError:
+        coin = False
+
+    try:
+        url = f'https://frontend-api.pump.fun/users/{address}'
+        response = requests.get(url)
+        data = response.json()
+
+        if data is not None:
+            wallet = True
+        if 'statusCode' in data:
+            wallet = False
+
+    except requests.exceptions.JSONDecodeError:
+        wallet = False
+
+    if wallet:
+        return 'w'
+    elif coin:
+        return 'c'
+    else:
+        return None

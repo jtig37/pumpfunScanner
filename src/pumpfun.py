@@ -8,7 +8,7 @@ sc = st.secrets
 
 
 def get_global(nsfw="false"):
-    url = f'https://frontend-api.pump.fun/coins?offset=0&limit=50&sort=last_trade_timestamp&order=DESC&includeNsfw={nsfw}'
+    url = f'https://frontend-api.pump.fun/coins?offset=0&limit=0&sort=last_trade_timestamp&order=DESC&includeNsfw={nsfw}'
     filtered_data = []
     response = requests.get(url)
 
@@ -16,7 +16,7 @@ def get_global(nsfw="false"):
         data = response.json()
         response.raise_for_status()
         if len(data) > 0:
-
+            data = data[:ss['limit']]
             for item in data:
 
                 if not item['complete']:
@@ -25,7 +25,8 @@ def get_global(nsfw="false"):
                             (ss['tg'] and item['telegram'] is None) or
                             (ss['web'] and item['website'] is None) or
                             (ss['koth'] and item['king_of_the_hill_timestamp'] is None) or
-                            (ss['mcap'] and item['usd_market_cap'] < ss['mcap'])):
+                            (ss['mcap'] and item['usd_market_cap'] < ss['mcap']) or
+                            (ss['replies'] and item['reply_count'] < ss['replies'])):
                         continue
                     else:
                         filtered_data.append(
@@ -36,6 +37,7 @@ def get_global(nsfw="false"):
                                 'marketCap': round(item['usd_market_cap']),
                                 'age': time_ago(int(item['created_timestamp'])),  # TODO: Conversion
                                 'link': item['mint'],
+                                'info': item['description'],
                                 # 'twitter': item['twitter'],
                                 # 'telegram': item['telegram'],
                                 # 'website': item['website'],
@@ -75,6 +77,7 @@ def get_koth(nsfw="false"):
                     'telegram': data['telegram'],
                     'website': data['website'],
                     'creator': data['creator'],
+                    'info': data['description'],
                     # 'KOTH': koth,
                     # 'lastTrade': time_ago(int(item['last_trade_timestamp'])),  # TODO: Conversion
                     'replies': data['reply_count'],

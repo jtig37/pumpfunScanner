@@ -1,0 +1,18 @@
+<style>
+        /* Style for the fixed button */
+        #fixedButton {
+            position: fixed;
+            bottom: 10px; /* Adjust as needed */
+            left: 10px;   /* Adjust as needed */
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 1000; /* Ensure it stays on top */
+        }
+</style>
+
+<a id="fixedButton" href="#test">Go Up</a>

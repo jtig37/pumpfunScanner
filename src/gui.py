@@ -44,26 +44,51 @@ def load_stats(data):
         with st.container(border=True):
 
             st.image(data['icon'], use_column_width=True)
-            nCol, sCol = st.columns([1, 4])
-            nCol.write('**:green[TICKER]**')
-            nCol.write('**:green[NAME]**')
-            nCol.write('**:green[MARKETCAP]**')
-            nCol.write('**:green[AGE]**')
-            nCol.write('**:green[CREATOR]**')
-            nCol.write('**:green[X]**')
-            nCol.write('**:green[TELEGRAM]**')
-            nCol.write('**:green[WEBSITE]**')
-            nCol.write('**:green[REPLIES]**')
 
-            sCol.write(data['ticker'])
-            sCol.write(data['name'])
-            sCol.write(f"${data['marketCap']} USD")
-            sCol.write(data['age'])
-            sCol.write(data['creator'])
-            sCol.write(data['twitter'])
-            sCol.write(data['telegram'])
-            sCol.write(data['website'])
-            sCol.write(str(data['replies']))
+            with st.container(border=False):
+                nCol, sCol = st.columns([1, 4])
+                nCol.write('**:green[TICKER]**')
+                sCol.write(data['ticker'])
+
+            with st.container(border=False):
+                nCol, sCol = st.columns([1, 4])
+                nCol.write('**:green[NAME]**')
+                sCol.write(data['name'])
+
+            with st.container(border=False):
+                nCol, sCol = st.columns([1, 4])
+                nCol.write('**:green[MARKETCAP]**')
+                sCol.write(f"${data['marketCap']} USD")
+
+            with st.container(border=False):
+                nCol, sCol = st.columns([1, 4])
+                nCol.write('**:green[AGE]**')
+                sCol.write(data['age'])
+
+            with st.container(border=False):
+                nCol, sCol = st.columns([1, 4])
+                nCol.write('**:green[CREATOR]**')
+                sCol.write(data['creator'])
+
+            with st.container(border=False):
+                nCol, sCol = st.columns([1, 4])
+                nCol.write('**:green[X]**')
+                sCol.write(data['twitter'])
+
+            with st.container(border=False):
+                nCol, sCol = st.columns([1, 4])
+                nCol.write('**:green[TELEGRAM]**')
+                sCol.write(data['telegram'])
+
+            with st.container(border=False):
+                nCol, sCol = st.columns([1, 4])
+                nCol.write('**:green[WEBSITE]**')
+                sCol.write(data['website'])
+
+            with st.container(border=False):
+                nCol, sCol = st.columns([1, 4])
+                nCol.write('**:green[REPLIES]**')
+                sCol.write(str(data['replies']))
 
             st.info(data['info'], icon='ℹ️')
             st.link_button('pump.fun', url=f"https://pump.fun/{data['link']}", use_container_width=True)

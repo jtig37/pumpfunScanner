@@ -34,7 +34,7 @@ def get_global(nsfw="false"):
                                 'icon': item['image_uri'],
                                 'ticker': item['symbol'],
                                 'name': item['name'],
-                                'marketCap': round(item['usd_market_cap']),
+                                'marketCap': int(item['usd_market_cap']),
                                 'age': time_ago(int(item['created_timestamp'])),  # TODO: Conversion
                                 'link': item['mint'],
                                 'info': item['description'],
@@ -70,8 +70,8 @@ def get_koth(nsfw="false"):
                     'icon': data['image_uri'],
                     'ticker': data['symbol'],
                     'name': data['name'],
-                    'marketCap': round(data['market_cap'] * solPrice),
-                    'age': time_ago(int(data['created_timestamp'])),  # TODO: Conversion
+                    'marketCap': int(data['market_cap'] * solPrice),
+                    'age': time_ago(int(data['created_timestamp'])),
                     'link': data['mint'],
                     'twitter': data['twitter'],
                     'telegram': data['telegram'],
@@ -79,7 +79,7 @@ def get_koth(nsfw="false"):
                     'creator': data['creator'],
                     'info': data['description'],
                     # 'KOTH': koth,
-                    # 'lastTrade': time_ago(int(item['last_trade_timestamp'])),  # TODO: Conversion
+                    # 'lastTrade': time_ago(int(item['last_trade_timestamp'])),
                     'replies': data['reply_count'],
                     # 'last_reply': item['last_reply']
                 }

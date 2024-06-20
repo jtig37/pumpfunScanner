@@ -11,7 +11,6 @@ st.set_page_config(
     layout="wide"
 )
 
-# gui.load_css_cache('upButton')
 # Initialize session state
 ut.init_state()
 
@@ -38,20 +37,13 @@ with h_r_col:
     h_l_2_col, h_m_2_col, h_r_2_col = st.columns([1, 1, 1])
     pfp_img = h_l_2_col.empty()
 
-# SUBMIT FORM
-# with h_l_col.form(key='search', clear_on_submit=True):
-#    ss['address'] = st.text_input(label='Look up a contract address')
-#    button = st.form_submit_button('Search')
-
 
 if 'nsfw' in ss and not ss['nsfw']:
     nsfw = 'false'
 else:
     nsfw = 'true'
 
-# GET FUNCTION
-#if not ss['address']:
-refresh = h_r_2_col.button('REFRESH', help='Refresh this Site!', use_container_width=True)
+h_r_2_col.button('REFRESH', help='Refresh this Site!', use_container_width=True)
 
 with left_col:
     st.markdown('# :green[Global]')

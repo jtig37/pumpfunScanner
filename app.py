@@ -37,7 +37,6 @@ with h_r_col:
     h_l_2_col, h_m_2_col, h_r_2_col = st.columns([1, 1, 1])
     pfp_img = h_l_2_col.empty()
 
-
 if 'nsfw' in ss and not ss['nsfw']:
     nsfw = 'false'
 else:

@@ -30,7 +30,7 @@ gui.load_css_cache('header')
 
 # Columns for responsive Page layout and page structure
 h_l_col, h_r_col = st.columns([1, 1])  # Columns header
-left_col, right_col = st.columns([4, 3])  # Columns Search
+left_col, right_col = st.columns([5, 3])  # Columns Search
 
 # BUTTONS
 with h_r_col:

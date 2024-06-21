@@ -31,15 +31,18 @@ def load_fake_df(data, progress):
                 col4.write(f"${str(data[i]['marketCap'])} USD")
                 col5.write(data[i]['age'])
 
-                sCol4.link_button(':green[pump.fun]', url=f"https://pump.fun/{data[i]['link']}", use_container_width=True)
+                if data[i]['twitter']:
+                    sCol1.link_button('Twitter', url=data[i]['twitter'], use_container_width=True)
+
                 if data[i]['telegram']:
                     sCol2.link_button('Telegram', url=data[i]['telegram'], use_container_width=True)
+
                 if data[i]['website']:
-                    sCol3.link_button('Website', url=data[i]['website'], use_container_width=True, help=':red[BE CAREFUL CLICKING ANY LINKS!]')
+                    sCol3.link_button('Website', url=data[i]['website'], use_container_width=True,
+                                      help=':red[BE CAREFUL CLICKING ANY LINKS!]')
 
-    else:
-        pass
-
+                sCol4.link_button(':green[pump.fun]', url=f"https://pump.fun/{data[i]['link']}",
+                                  use_container_width=True)
     progress.empty()
 
 
@@ -143,4 +146,4 @@ def load_sidebar():
         replies.slider('Minimum Replies', max_value=100, step=10, key='replies')
         limit.slider('Fetch Limit', min_value=50, max_value=500, step=50, key='limit')
 
-    #st.link_button('UP', url='#test', use_container_width=True)
+    # st.link_button('UP', url='#test', use_container_width=True)

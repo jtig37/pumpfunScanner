@@ -30,7 +30,7 @@ def load_fake_df(data, progress):
                 col3.write(data[i]['name'])
                 col4.write(f"${str(data[i]['marketCap'])} USD")
                 col5.write(data[i]['age'])
-                col6.link_button('pump.fun', url=f"https://pump.fun/{data[i]['link']}")
+                col6.link_button('pump.fun', url=f"https://pump.fun/{data[i]['link']}", use_container_width=False)
 
     else:
         pass
@@ -91,7 +91,7 @@ def load_stats(data):
                 sCol.write(str(data['replies']))
 
             st.info(data['info'], icon='ℹ️')
-            st.link_button('pump.fun', url=f"https://pump.fun/{data['link']}")
+            st.link_button('pump.fun', url=f"https://pump.fun/{data['link']}", use_container_width=True)
 
     else:
         pass

@@ -25,7 +25,7 @@ top_left.header("💊 :green[pump.fun Scanner]")
 top_right.markdown(f':green[SOLANA: ${pf.get_sol_price()}]')
 
 gui.load_css_cache('footer')
-gui.load_css_cache('header')
+#gui.load_css_cache('header')
 
 
 # Columns for responsive Page layout and page structure

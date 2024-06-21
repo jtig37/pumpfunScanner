@@ -32,8 +32,12 @@ def load_fake_df(data, progress):
                 col5.write(data[i]['age'])
 
                 sCol4.link_button(':green[pump.fun]', url=f"https://pump.fun/{data[i]['link']}", use_container_width=True)
+                if data[i]['twitter']:
+                    sCol1.link_button('Twitter', url=data[i]['twitter'], use_container_width=True)
+
                 if data[i]['telegram']:
                     sCol2.link_button('Telegram', url=data[i]['telegram'], use_container_width=True)
+
                 if data[i]['website']:
                     sCol3.link_button('Website', url=data[i]['website'], use_container_width=True, help=':red[BE CAREFUL CLICKING ANY LINKS!]')
 

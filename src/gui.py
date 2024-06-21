@@ -17,33 +17,29 @@ def load_fake_df(data, progress):
         for i in range(len(data)):
             progress.progress(value=(i / len(data)), text='Loading trades ...')
             with st.container(border=True):
-                col1, col2, col3, col4, col5, col6 = st.columns([1, 1, 1, 1, 1, 1])
-                sCol1, sCol2, sCol3 = st.columns([1, 1, 1])
+                col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1, ])
+                sCol1, sCol2, sCol3, sCol4 = st.columns([1, 1, 1, 1])
                 st.info(data[i]['info'], icon='ℹ️')
                 col2.write("**:green[TICKER]**")
                 col3.write("**:green[NAME]**")
                 col4.write("**:green[MARKETCAP]**")
                 col5.write("**:green[AGE]**")
-                col6.write("**:green[LINK]**")
 
                 col1.image(data[i]['icon'])
                 col2.write(data[i]['ticker'])
                 col3.write(data[i]['name'])
                 col4.write(f"${str(data[i]['marketCap'])} USD")
                 col5.write(data[i]['age'])
-                col6.link_button('pump.fun', url=f"https://pump.fun/{data[i]['link']}", use_container_width=False)
 
-                if data[i]['twitter']:
-                    sCol1.link_button('Twitter', url=data[i]['twitter'], use_container_width=True)
+                sCol4.link_button(':green[pump.fun]', url=f"https://pump.fun/{data[i]['link']}", use_container_width=True)
                 if data[i]['telegram']:
                     sCol2.link_button('Telegram', url=data[i]['telegram'], use_container_width=True)
                 if data[i]['website']:
-                    sCol3.link_button('Website', url=data[i]['website'], use_container_width=True)
+                    sCol3.link_button('Website', url=data[i]['website'], use_container_width=True, help=':red[BE CAREFUL CLICKING ANY LINKS!]')
 
     else:
         pass
 
-    #   progress.progress(value=100, text='Finished!')
     progress.empty()
 
 
@@ -99,14 +95,13 @@ def load_stats(data):
                 sCol.write(str(data['replies']))
 
             st.info(data['info'], icon='ℹ️')
-            st.link_button('pump.fun', url=f"https://pump.fun/{data['link']}", use_container_width=True)
+            st.link_button(':green[pump.fun]', url=f"https://pump.fun/{data['link']}", use_container_width=True)
 
     else:
         pass
 
 
 def load_sidebar():
-    # bools (USERNAME ALS BLACKLIST???)
     with st.form(key='filter'):
         sLCol, sRCol = st.columns([1, 1])
         sLCol.write("# :green[FILTER:]")

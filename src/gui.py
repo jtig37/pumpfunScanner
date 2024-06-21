@@ -18,6 +18,7 @@ def load_fake_df(data, progress):
             progress.progress(value=(i / len(data)), text='Loading trades ...')
             with st.container(border=True):
                 col1, col2, col3, col4, col5, col6 = st.columns([1, 1, 1, 1, 1, 1])
+                sCol1, sCol2, sCol3 = st.columns([1, 1, 1])
                 st.info(data[i]['info'], icon='ℹ️')
                 col2.write("**:green[TICKER]**")
                 col3.write("**:green[NAME]**")
@@ -31,6 +32,13 @@ def load_fake_df(data, progress):
                 col4.write(f"${str(data[i]['marketCap'])} USD")
                 col5.write(data[i]['age'])
                 col6.link_button('pump.fun', url=f"https://pump.fun/{data[i]['link']}", use_container_width=False)
+
+                if data[i]['twitter']:
+                    sCol1.link_button('Twitter', url=data[i]['twitter'], use_container_width=True)
+                if data[i]['telegram']:
+                    sCol2.link_button('Telegram', url=data[i]['telegram'], use_container_width=True)
+                if data[i]['website']:
+                    sCol3.link_button('Website', url=data[i]['website'], use_container_width=True)
 
     else:
         pass

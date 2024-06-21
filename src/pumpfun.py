@@ -38,9 +38,9 @@ def get_global(nsfw="false"):
                                 'age': time_ago(int(item['created_timestamp'])),  # TODO: Conversion
                                 'link': item['mint'],
                                 'info': item['description'],
-                                # 'twitter': item['twitter'],
-                                # 'telegram': item['telegram'],
-                                # 'website': item['website'],
+                                'twitter': item['twitter'],
+                                'telegram': item['telegram'],
+                                'website': item['website'],
                                 # 'creator': item['creator'],
                                 # 'KOTH': koth,
                                 # 'lastTrade': time_ago(int(item['last_trade_timestamp'])),  # TODO: Conversion

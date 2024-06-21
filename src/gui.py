@@ -38,7 +38,7 @@ def load_fake_df(data, progress):
                 if data[i]['telegram']:
                     sCol2.link_button('Telegram', url=data[i]['telegram'], use_container_width=True)
                 if data[i]['website']:
-                    sCol3.link_button('Website', url=data[i]['website'], use_container_width=True)
+                    sCol3.link_button('Website', url=data[i]['website'], use_container_width=True, help=':red[BE CAREFUL CLICKING ANY UNKOWN LINKS!]')
 
     else:
         pass

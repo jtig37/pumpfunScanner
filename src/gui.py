@@ -91,7 +91,7 @@ def load_stats(data):
                 sCol.write(str(data['replies']))
 
             st.info(data['info'], icon='ℹ️')
-            st.link_button('pump.fun', url=f"https://pump.fun/{data['link']}", use_container_width=True)
+            st.link_button('pump.fun', url=f"https://pump.fun/{data['link']}")
 
     else:
         pass

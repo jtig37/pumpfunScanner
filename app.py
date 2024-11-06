@@ -2,6 +2,17 @@ import streamlit as st
 import src.utils as ut
 import src.gui as gui
 import src.pumpfun as pf
+import streamlit as st
+
+# Initialize session state for 'limit' if it doesn't exist
+if 'limit' not in st.session_state:
+    st.session_state['limit'] = 10  # Set a default value (e.g., 10)
+
+# The rest of your app code
+import pumpfun as pf  # Assuming this is how you import the module
+
+# Now you can safely access 'limit' in session state
+globalData = pf.get_global(nsfw=nsfw)
 
 ss = st.session_state
 
